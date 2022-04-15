@@ -50,7 +50,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/dashboard/regions/create" class="nav-link {{ Request::is('dashboard/regions/create') ? 'active' : '' }}">
+                <a href="/dashboard/items/create" class="nav-link {{ Request::is('dashboard/items/create') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tambah Barang</p>
                 </a>

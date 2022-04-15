@@ -28,7 +28,9 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.items.create', [
+            'title' => 'Tambah Barang'
+        ]);
     }
 
     /**
@@ -39,7 +41,17 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'code' => 'required',
+            'name' => 'required',
+            'type' => 'required',
+            'stock' => 'required',
+            'price' => 'required'
+        ]); 
+
+        Item::create($validatedData);
+
+        return redirect('/dashboard/items')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
