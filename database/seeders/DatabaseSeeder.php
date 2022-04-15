@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'price' => 55000
         ]);
 
-        Item::create([
+        Transaction::create([
             'code' => 'TRK0001',
             'date' => date("Y/m/d"),
             'total' => 105000,
