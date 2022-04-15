@@ -18,3 +18,11 @@ Route::get('/', function () {
         'title' => 'Login'
     ]);
 });
+
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard.index', [
+        'title' => 'Dashboard'
+    ]);
+});
