@@ -15,7 +15,10 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.items.index', [
+            'title' => 'Barang',
+            'items' => Item::all(),
+        ]);
     }
 
     /**

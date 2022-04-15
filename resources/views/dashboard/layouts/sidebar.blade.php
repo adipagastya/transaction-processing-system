@@ -34,8 +34,8 @@
             </a>
           </li>
           
-          <li class="nav-item {{ Request::is('dashboard/regions*') ? 'menu-open' : '' }}">
-            <a href="#" class="nav-link {{ Request::is('dashboard/regions*') ? 'active' : '' }}">
+          <li class="nav-item {{ Request::is('dashboard/items*') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Request::is('dashboard/items*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-box"></i>
               <p>
                 Barang
@@ -44,7 +44,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/dashboard/regions" class="nav-link {{ Request::is('dashboard/regions') ? 'active' : '' }}">
+                <a href="/dashboard/items" class="nav-link {{ Request::is('dashboard/items') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Barang</p>
                 </a>
