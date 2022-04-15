@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Item;
+use App\Models\Transaction;
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +27,9 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard.index', [
-        'title' => 'Dashboard'
+        'title' => 'Dashboard',
+        'itemCount' => Item::all(),
+        'transactionCount' => Transaction::all(),
+        'userCount' => User::all()
     ]);
 });

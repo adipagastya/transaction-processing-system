@@ -22,14 +22,14 @@
           <!-- small box -->
           <div class="small-box bg-primary">
             <div class="inner">
-              {{-- <h3>{{ $candidateCount->count() }}</h3> --}}
+              <h3>{{ $itemCount->count() }}</h3>
 
-              <p>Kandidat</p>
+              <p>Barang</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-stalker"></i>
+              <i class="ion ion-cube"></i>
             </div>
-            <a href="/dashboard/candidates" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="/dashboard/items" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -37,14 +37,14 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              {{-- <h3>{{ $workCount->count() }}</h3> --}}
+              <h3>{{ $transactionCount->count() }}</h3>
 
-              <p>Bidang Pekerjaan</p>
+              <p>Transaksi</p>
             </div>
             <div class="icon">
-              <i class="ion ion-briefcase"></i>
+              <i class="ion ion-cash"></i>
             </div>
-            <a href="/dashboard/workfields" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="/dashboard/transactions" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         {{-- @can('admin') --}}
@@ -52,7 +52,7 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              {{-- <h3>{{ $userCount->count() }}</h3> --}}
+              <h3>{{ $userCount->count() }}</h3>
 
               <p>Role User</p>
             </div>
@@ -60,20 +60,6 @@
               <i class="ion ion-person"></i>
             </div>
             <a href="/dashboard/users" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-danger">
-            <div class="inner">
-              {{-- <h3>{{ $regionCount->count() }}</h3> --}}
-
-              <p>Wilayah</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-map"></i>
-            </div>
-            <a href="/dashboard/regions" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         {{-- @endcan --}}
