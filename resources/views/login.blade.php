@@ -35,7 +35,7 @@
               </button>
             </div>
         @endif
-        <form action="/login" method="post">
+        <form action="/" method="post">
           @csrf
           <div class="input-group mb-3">
             <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" id="email" autofocus required value="{{ old('email') }}">

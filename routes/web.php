@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+
 use Illuminate\Support\Facades\Route;
 
 use App\Models\Item;
@@ -17,13 +19,9 @@ use App\Models\User;
 |
 */
 
-Route::get('/', function () {
-    return view('login', [
-        'title' => 'Login'
-    ]);
-});
-
-
+Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', function () {
     return view('dashboard.index', [
@@ -32,4 +30,4 @@ Route::get('/dashboard', function () {
         'transactionCount' => Transaction::all(),
         'userCount' => User::all()
     ]);
-});
+})->middleware('auth');
