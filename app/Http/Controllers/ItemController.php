@@ -73,7 +73,10 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        return view('dashboard.items.edit', [
+            'title' => 'Ubah Barang',
+            'item' => $item
+        ]);
     }
 
     /**
@@ -85,7 +88,18 @@ class ItemController extends Controller
      */
     public function update(UpdateItemRequest $request, Item $item)
     {
-        //
+        $validatedData = $request->validate([
+            'code' => 'required',
+            'name' => 'required',
+            'type' => 'required',
+            'stock' => 'required',
+            'price' => 'required'
+        ]); 
+
+        Item::where('id', $item->id)
+            ->update($validatedData);
+
+        return redirect('/dashboard/items')->with('success', 'Data berhasil diubah');
     }
 
     /**
