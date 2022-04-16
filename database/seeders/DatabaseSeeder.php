@@ -26,6 +26,13 @@ class DatabaseSeeder extends Seeder
             'is_admin' => 1
         ]);
 
+        User::create([
+            'name' => 'Pratama',
+            'email' => 'pratama@mail.com',
+            'password' => bcrypt('12345'),
+            'is_admin' => 0
+        ]);
+
         Item::create([
             'code' => 'ASW0001',
             'name' => 'Sarang Walet',
