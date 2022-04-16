@@ -68,13 +68,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/dashboard/regions" class="nav-link {{ Request::is('dashboard/regions') ? 'active' : '' }}">
+                <a href="/dashboard/transactions" class="nav-link {{ Request::is('dashboard/transactions') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Transaksi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/dashboard/regions/create" class="nav-link {{ Request::is('dashboard/regions/create') ? 'active' : '' }}">
+                <a href="/dashboard/transactions/create" class="nav-link {{ Request::is('dashboard/transactions/create') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tambah Transaksi</p>
                 </a>

@@ -15,7 +15,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.transactions.index', [
+            'title' => 'Transaksi',
+            'transactions' => Transaction::all(),
+        ]);
     }
 
     /**
