@@ -26,7 +26,7 @@
           <!-- /.card-header -->
           <!-- form start -->
           <form method="post" action="/dashboard/items/{{ $item->id }}">
-            @method('put')
+            
             @csrf
             <div class="card-body">
               <div class="form-group">

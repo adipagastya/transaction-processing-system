@@ -19,6 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->date('date');
             $table->double('total');
             $table->foreignId('user_id');
+            $table->foreignId('item_id');
             $table->timestamps();
         });
     }

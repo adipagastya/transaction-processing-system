@@ -34,11 +34,20 @@ class DatabaseSeeder extends Seeder
             'price' => 55000
         ]);
 
+        Item::create([
+            'code' => 'ASW0002',
+            'name' => 'Rokok Batang',
+            'type' => 'Batang',
+            'stock' => 25,
+            'price' => 15000
+        ]);
+
         Transaction::create([
             'code' => 'TRK0001',
             'date' => date("Y/m/d"),
             'total' => 105000,
-            'user_id' => 1
+            'user_id' => 1,
+            'item_id' => 1
         ]);
     }
 }

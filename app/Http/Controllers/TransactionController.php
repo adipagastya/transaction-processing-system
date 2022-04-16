@@ -20,7 +20,8 @@ class TransactionController extends Controller
     {
         return view('dashboard.transactions.index', [
             'title' => 'Transaksi',
-            'transactions' => Transaction::all()
+            'transactions' => Transaction::all(),
+            'items' => Item::all()
         ]);
     }
 
@@ -50,22 +51,15 @@ class TransactionController extends Controller
             'date' => 'required',
             'total' => 'required',
             'user_id' => 'required',
+            'item_id' => 'required',
         ]); 
 
-        // $data = [
-        //     [
-        //         'transaction_id' => $request->code,
-        //         'item_id' => $request->item_id
-        //     ]
-        // ];
-
         Transaction::create($validatedData);
-        // DB::insert('insert into transaction_detail (transaction_code, item_id) values (?, ?)', ['transaction_code' => $request->code, 'item_id' => $request->item_id]);
 
-        DB::table('transaction_detail')->insert([
-            'transaction_code' => $request->code,
-            'item_id' => $request->item_id
-        ]);
+        // DB::table('transaction_detail')->insert([
+        //     'transaction_code' => $request->code,
+        //     'item_id' => $request->item_id
+        // ]);
 
         return redirect('/dashboard/transactions')->with('success', 'Data berhasil ditambahkan');
     }
@@ -89,7 +83,11 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        //
+        return view('dashboard.transactions.edit', [
+            'title' => 'Ubah Transaksi',
+            'transaction' => $transaction,
+            'items' => Item::all()
+        ]);
     }
 
     /**
@@ -101,7 +99,22 @@ class TransactionController extends Controller
      */
     public function update(UpdateTransactionRequest $request, Transaction $transaction)
     {
-        //
+        $validatedData = $request->validate([
+            'code' => 'required',
+            'date' => 'required',
+            'total' => 'required',
+            'user_id' => 'required',
+            'item_id' => 'required',
+        ]); 
+
+        Transaction::where('id', $transaction->id)
+        ->update($validatedData);
+
+        // DB::table('transaction_detail')
+        //       ->where('transaction_code', $request->code)
+        //       ->update(['item_id' => $request->item_id]);
+
+        return redirect('/dashboard/transactions')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**

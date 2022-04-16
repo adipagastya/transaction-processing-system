@@ -35,6 +35,7 @@
                 <tr>
                   <th>Kode</th>
                   <th>Tanggal</th>
+                  <th>Barang</th>
                   <th>Total</th>
                   <th>Action</th>
                 </tr>
@@ -45,6 +46,12 @@
                 <tr>
                   <td>{{ $transaction->code }}</td>
                   <td>{{ $transaction->date }}</td>
+                  {{-- <td>{{ $transaction->item_id }}</td> --}}
+                  <td> 
+                    @foreach ($items as $item)
+                    {{ $transaction->item_id == $item->id ? $item->name : ''}}
+                    @endforeach
+                  </td>
                   <td>Rp {{ number_format($transaction->total, 2) }}</td>
                   <td>
                       <a href="/dashboard/transactions/{{ $transaction->id }}/edit" class="badge bg-warning p-2"><i class="fas fa-pen"></i></a>
