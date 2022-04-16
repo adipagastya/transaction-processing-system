@@ -22,7 +22,7 @@ use App\Models\User;
 |
 */
 
-Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/', [LoginController::class, 'index']);
 Route::post('/', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -37,4 +37,4 @@ Route::get('/dashboard', function () {
 
 Route::resource('/dashboard/items', ItemController::class)->middleware('auth');
 Route::resource('/dashboard/transactions', TransactionController::class)->middleware('auth');
-Route::resource('/dashboard/users', UserController::class)->middleware('auth');
+Route::resource('/dashboard/users', UserController::class)->middleware('admin');

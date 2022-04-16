@@ -82,7 +82,7 @@
             </ul>
           </li>
 
-          {{-- @can('admin') --}}
+          @can('admin')
           <li class="nav-header">ADMINISTRATOR</li>
           <li class="nav-item {{ Request::is('dashboard/users*') ? 'menu-open' : '' }}">
             <a href="#" class="nav-link {{ Request::is('dashboard/users*') ? 'active' : '' }}">
@@ -107,7 +107,7 @@
               </li>
             </ul>
           </li>
-          {{-- @endcan --}}
+          @endcan
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
