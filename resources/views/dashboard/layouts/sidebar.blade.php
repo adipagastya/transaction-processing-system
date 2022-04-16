@@ -58,8 +58,8 @@
             </ul>
           </li>
 
-          <li class="nav-item {{ Request::is('dashboard/regions*') ? 'menu-open' : '' }}">
-            <a href="#" class="nav-link {{ Request::is('dashboard/regions*') ? 'active' : '' }}">
+          <li class="nav-item {{ Request::is('dashboard/transactions*') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Request::is('dashboard/transactions*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-receipt"></i>
               <p>
                 Transaksi

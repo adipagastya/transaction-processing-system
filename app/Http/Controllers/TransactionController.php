@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\Item;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
+
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
@@ -17,7 +20,7 @@ class TransactionController extends Controller
     {
         return view('dashboard.transactions.index', [
             'title' => 'Transaksi',
-            'transactions' => Transaction::all(),
+            'transactions' => Transaction::all()
         ]);
     }
 
@@ -28,7 +31,10 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.transactions.create', [
+            'title' => 'Tambah Transaksi',
+            'items' => Item::all()
+        ]);
     }
 
     /**
@@ -39,7 +45,29 @@ class TransactionController extends Controller
      */
     public function store(StoreTransactionRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'code' => 'required',
+            'date' => 'required',
+            'total' => 'required',
+            'user_id' => 'required',
+        ]); 
+
+        // $data = [
+        //     [
+        //         'transaction_id' => $request->code,
+        //         'item_id' => $request->item_id
+        //     ]
+        // ];
+
+        Transaction::create($validatedData);
+        // DB::insert('insert into transaction_detail (transaction_code, item_id) values (?, ?)', ['transaction_code' => $request->code, 'item_id' => $request->item_id]);
+
+        DB::table('transaction_detail')->insert([
+            'transaction_code' => $request->code,
+            'item_id' => $request->item_id
+        ]);
+
+        return redirect('/dashboard/transactions')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -84,6 +112,7 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        Transaction::destroy($transaction->id);
+        return redirect('/dashboard/transactions')->with('success', 'Data berhasil dihapus');
     }
 }

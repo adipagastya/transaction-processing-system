@@ -25,28 +25,34 @@
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form method="post" action="/dashboard/items">
+          <form method="post" action="/dashboard/transactions">
             @csrf
+            <input class="form-control" name="user_id" value="<?= auth()->user()->id ?>" hidden required>
             <div class="card-body">
               <div class="form-group">
-                <label>Kode Barang</label>
-                <input type="text" class="form-control" placeholder="Kode Barang" name="code" required>
+                <label>Kode Transaksi</label>
+                <input type="text" class="form-control" placeholder="Kode Transaksi" name="code" required>
               </div>
               <div class="form-group">
-                <label>Nama Barang</label>
-                <input type="text" class="form-control" placeholder="Nama Barang" name="name" required>
+                <label>Tanggal</label>
+                <input type="text" class="form-control" placeholder="Tanggal" name="date" value="<?= date('Y/m/d')?>" readonly required>
+              </div>
+              <!-- select -->
+              <div class="form-group">
+                <label>Barang</label>
+                <select class="form-control" name="item_id" required>
+                  @foreach ($items as $item)
+                      @if (old('item_id') == $item->id)
+                          <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                      @else
+                          <option value="{{ $item->id }}">{{ $item->name }} - {{ $item->price }}</option>
+                      @endif
+                  @endforeach
+                </select>
               </div>
               <div class="form-group">
-                <label>Tipe</label>
-                <input type="text" class="form-control" placeholder="Tipe" name="type" required>
-              </div>
-              <div class="form-group">
-                <label>Stok</label>
-                <input type="number" class="form-control" placeholder="Stok" name="stock" required>
-              </div>
-              <div class="form-group">
-                <label>Harga</label>
-                <input type="number" class="form-control" placeholder="Harga" name="price" required>
+                <label>Total Transaksi</label>
+                <input type="number" class="form-control" placeholder="Total Transaksi" name="total" required>
               </div>
             </div>
             <!-- /.card-body -->

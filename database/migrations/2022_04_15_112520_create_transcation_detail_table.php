@@ -13,8 +13,8 @@ class CreateTranscationDetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('transcation_detail', function (Blueprint $table) {
-            $table->foreignId('transaction_id');
+        Schema::create('transaction_detail', function (Blueprint $table) {
+            $table->string('transaction_code');
             $table->foreignId('item_id');
             $table->timestamps();
         });
