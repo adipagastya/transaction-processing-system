@@ -113,4 +113,12 @@ class ItemController extends Controller
         Item::destroy($item->id);
         return redirect('/dashboard/items')->with('success', 'Data berhasil dihapus');
     }
+
+    public function getItemById($itemId)
+    {
+        $item = Item::where('id',$itemId)->get();
+        $data = $item->toArray(); 
+
+        return response()->json($data);
+    }
 }

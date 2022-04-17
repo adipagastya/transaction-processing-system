@@ -38,3 +38,5 @@ Route::get('/dashboard', function () {
 Route::resource('/dashboard/items', ItemController::class)->middleware('auth');
 Route::resource('/dashboard/transactions', TransactionController::class)->middleware('auth');
 Route::resource('/dashboard/users', UserController::class)->middleware('admin');
+
+Route::get('/getPrice/{itemId}',[ItemController::class,'getItemById'] ); 
