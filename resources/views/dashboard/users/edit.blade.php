@@ -47,6 +47,15 @@
                   </div>
                 @enderror
               </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" value="{{ old('password', $user->password) }}">
+                @error('password')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
               <!-- radio -->
               <div class="form-group">
                 <label>Role</label>

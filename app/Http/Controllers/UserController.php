@@ -99,7 +99,18 @@ class UserController extends Controller
             $rules['email'] = 'required|unique:users';
         }
 
+        if ($request->password != $user->password) {
+            $rules['password'] = 'required|min:5|max:255';
+        }
+
         $validatedData = $request->validate($rules);
+        
+        if ($request->password != $user->password) {
+            $validatedData['password'] = Hash::make($request->password);
+        } else {
+            $validatedData['password'] = $request->password;
+        }
+
 
         User::where('id', $user->id)
             ->update($validatedData);
