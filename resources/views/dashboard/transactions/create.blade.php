@@ -40,8 +40,8 @@
               <!-- select -->
               <div class="form-group">
                 <label>Barang</label>
-                <select class="form-control" name="item_id" id="item" required>
-                  <option value="" selected>Pilih Barang</option>
+                <select class="form-control" name="item_id" id="item" onChange="update()" required>
+                  {{-- <option value="#" selected>Pilih Barang</option> --}}
                   @foreach ($items as $item)
                       @if (old('item_id') == $item->id)
                           <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
@@ -53,7 +53,7 @@
               </div>
               <div class="form-group">
                 <label>Harga</label>
-                <input type="number" class="form-control" placeholder="Harga" id="price">
+                <input type="text" class="form-control" placeholder="Harga" id="price">
               </div>
               <div class="form-group">
                 <label>Jumlah</label>
@@ -82,16 +82,31 @@
 <script>
   function mult(value) {
     var x;
-    x = 2 * value;
+    var price = document.getElementById('price').value;
+
+    x = price * value;
 
     document.getElementById('total').value = x;
   }
 </script>
 
 <script>
+  function update() {
+    var select = document.getElementById('item');
+    var option = select.options[select.selectedIndex].text;
+    const myArray = option.split(" ");
+
+    document.getElementById('price').value = myArray[3];
+  }
+
+  update();
+</script>
+
+{{-- <script>
   $(document).ready(function(){
     $('#item').on('change',function(){
       var itemId = $(this).val();
+      console.log(itemId);
       if (itemId) {
         $.ajax({
           url       : '/getPrice/' + itemId,
@@ -106,7 +121,7 @@
         });
       }
     })
-  }
-</script>
+  })
+</script> --}}
 
 @endsection
