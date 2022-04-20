@@ -57,7 +57,7 @@
               </div>
               <div class="form-group">
                 <label>Jumlah</label>
-                <input type="number" class="form-control" placeholder="Jumlah" onkeyup="mult(this.value)">
+                <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" onkeyup="mult(this.value)">
               </div>
               <div class="form-group">
                 <label>Total Transaksi</label>

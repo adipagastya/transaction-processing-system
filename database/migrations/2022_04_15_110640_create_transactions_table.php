@@ -17,6 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->string('code');
             $table->date('date');
+            $table->integer('jumlah');
             $table->double('total');
             $table->foreignId('user_id');
             $table->foreignId('item_id');

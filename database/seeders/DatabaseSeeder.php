@@ -52,7 +52,8 @@ class DatabaseSeeder extends Seeder
         Transaction::create([
             'code' => 'TRK0001',
             'date' => date("Y/m/d"),
-            'total' => 105000,
+            'jumlah' => 2,
+            'total' => 110000,
             'user_id' => 1,
             'item_id' => 1
         ]);

@@ -49,6 +49,7 @@ class TransactionController extends Controller
         $validatedData = $request->validate([
             'code' => 'required',
             'date' => 'required',
+            'jumlah' => 'required',
             'total' => 'required',
             'user_id' => 'required',
             'item_id' => 'required',
@@ -102,6 +103,7 @@ class TransactionController extends Controller
         $validatedData = $request->validate([
             'code' => 'required',
             'date' => 'required',
+            'jumlah' => 'required',
             'total' => 'required',
             'user_id' => 'required',
             'item_id' => 'required',

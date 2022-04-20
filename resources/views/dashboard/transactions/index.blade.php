@@ -36,6 +36,7 @@
                   <th>Kode</th>
                   <th>Tanggal</th>
                   <th>Barang</th>
+                  <th>Jumlah</th>
                   <th>Total</th>
                   <th>Action</th>
                 </tr>
@@ -46,7 +47,7 @@
                 <tr>
                   <td>{{ $transaction->code }}</td>
                   <td>{{ $transaction->date }}</td>
-                  {{-- <td>{{ $transaction->item_id }}</td> --}}
+                  <td>{{ $transaction->jumlah }}</td>
                   <td> 
                     @foreach ($items as $item)
                     {{ $transaction->item_id == $item->id ? $item->name : ''}}

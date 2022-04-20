@@ -41,7 +41,7 @@
               <!-- select -->
               <div class="form-group">
                 <label>Barang</label>
-                <select class="form-control" name="item_id" required>
+                <select class="form-control" name="item_id" id="item" onChange="update()" required>
                   @foreach ($items as $item)
                       @if (old('item_id', $transaction->item_id) == $item->id)
                           <option value="{{ $item->id }}" selected>{{ $item->name }} - {{ $item->price }}</option>
@@ -52,8 +52,16 @@
                 </select>
               </div>
               <div class="form-group">
+                <label>Harga</label>
+                <input type="text" class="form-control" placeholder="Harga" id="price">
+              </div>
+              <div class="form-group">
+                <label>Jumlah</label>
+                <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" value="{{ $transaction->jumlah }}" onkeyup="mult(this.value)">
+              </div>
+              <div class="form-group">
                 <label>Total Transaksi</label>
-                <input type="number" class="form-control" placeholder="Total Transaksi" name="total"  value="{{ $transaction->total }}" required>
+                <input type="number" class="form-control" placeholder="Total Transaksi" name="total"  value="{{ $transaction->total }}" id="total" required>
               </div>
             </div>
             <!-- /.card-body -->
@@ -71,4 +79,28 @@
   </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+
+<script>
+  function mult(value) {
+    var x;
+    var price = document.getElementById('price').value;
+
+    x = price * value;
+
+    document.getElementById('total').value = x;
+  }
+</script>
+
+<script>
+  function update() {
+    var select = document.getElementById('item');
+    var option = select.options[select.selectedIndex].text;
+    const myArray = option.split(" ");
+
+    document.getElementById('price').value = myArray[3];
+  }
+
+  update();
+</script>
+
 @endsection
