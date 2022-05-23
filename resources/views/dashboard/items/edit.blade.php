@@ -39,7 +39,23 @@
               </div>
               <div class="form-group">
                 <label>Tipe</label>
-                <input type="text" class="form-control" placeholder="Tipe" name="type" value="{{ old('type', $item->type) }}" required>
+                <select class="form-control" name="type" required>
+                  <option value="Padat"
+                  @if ('Padat' == old('type', $item->type))
+                      selected="selected"
+                  @endif
+                  >Padat</option>
+                  <option value="Cair"
+                  @if ('Cair' == old('type', $item->type))
+                      selected="selected"
+                  @endif
+                  >Cair</option>
+                  <option value="Batang"
+                  @if ('Batang' == old('type', $item->type))
+                      selected="selected"
+                  @endif
+                  >Batang</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>Stok</label>

@@ -33,18 +33,19 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
+                  <th>No.</th>
                   <th>Kode</th>
                   <th>Tanggal</th>
                   <th>Barang</th>
                   <th>Jumlah</th>
                   <th>Total</th>
-                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach ($transactions as $transaction)
                 
                 <tr>
+                  <td>{{ $loop->iteration }}</td>
                   <td>{{ $transaction->code }}</td>
                   <td>{{ $transaction->date }}</td>
                   <td> 
@@ -54,14 +55,6 @@
                   </td>
                   <td>{{ $transaction->jumlah }}</td>
                   <td>Rp {{ number_format($transaction->total, 2) }}</td>
-                  <td>
-                      <a href="/dashboard/transactions/{{ $transaction->id }}/edit" class="badge bg-warning p-2"><i class="fas fa-pen"></i></a>
-                      <form action="/dashboard/transactions/{{ $transaction->id }}" method="post" class="d-inline">
-                        @method('delete')
-                        @csrf
-                        <button class="badge bg-danger border-0 p-2" onclick="return confirm('Anda yakin?')"><i class="fas fa-trash"></i></button>
-                      </form>
-                  </td>
                 </tr>
                 @endforeach
                 

@@ -46,9 +46,13 @@ class TransactionController extends Controller
      */
     public function store(StoreTransactionRequest $request)
     {
+        $stock = Item::find($request->item_id);
+        $newStock = $stock->stock - $request->jumlah;
+
         $validatedData = $request->validate([
             'code' => 'required',
             'date' => 'required',
+            'year' => 'required',
             'jumlah' => 'required',
             'total' => 'required',
             'user_id' => 'required',
@@ -57,10 +61,9 @@ class TransactionController extends Controller
 
         Transaction::create($validatedData);
 
-        // DB::table('transaction_detail')->insert([
-        //     'transaction_code' => $request->code,
-        //     'item_id' => $request->item_id
-        // ]);
+        $item = Item::find($request->item_id);
+        $item->stock = $newStock;
+        $item->save();
 
         return redirect('/dashboard/transactions')->with('success', 'Data berhasil ditambahkan');
     }
@@ -127,6 +130,13 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
+        $stock = Item::find($transaction->item_id);
+        $newStock = $stock->stock + $transaction->jumlah;
+
+        $item = Item::find($transaction->item_id);
+        $item->stock = $newStock;
+        $item->save();
+
         Transaction::destroy($transaction->id);
         return redirect('/dashboard/transactions')->with('success', 'Data berhasil dihapus');
     }

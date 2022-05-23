@@ -38,7 +38,11 @@
               </div>
               <div class="form-group">
                 <label>Tipe</label>
-                <input type="text" class="form-control" placeholder="Tipe" name="type" required>
+                <select class="form-control" name="type" required>
+                  <option value="Padat">Padat</option>
+                  <option value="Cair">Cair</option>
+                  <option value="Batang">Batang</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>Stok</label>

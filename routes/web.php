@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 
@@ -38,5 +39,10 @@ Route::get('/dashboard', function () {
 Route::resource('/dashboard/items', ItemController::class)->middleware('auth');
 Route::resource('/dashboard/transactions', TransactionController::class)->middleware('auth');
 Route::resource('/dashboard/users', UserController::class)->middleware('admin');
+
+Route::get('/dashboard/reports/transactions',[ReportController::class,'transactionsReport'] ); 
+Route::get('/dashboard/reports/items',[ReportController::class,'itemsReport'] ); 
+Route::get('/dashboard/reports/sales',[ReportController::class,'salesReport'] ); 
+Route::get('/dashboard/reports/sales/detail/{year}',[ReportController::class,'salesReportDetail'] ); 
 
 Route::get('/getPrice/{itemId}',[ItemController::class,'getItemById'] ); 

@@ -107,6 +107,35 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item {{ Request::is('dashboard/reports*') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Request::is('dashboard/reports*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Laporan
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/dashboard/reports/transactions" class="nav-link {{ Request::is('dashboard/reports/transactions') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Laporan Transaksi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dashboard/reports/items" class="nav-link {{ Request::is('dashboard/reports/items') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Laporan Stok Barang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dashboard/reports/sales" class="nav-link {{ Request::is('dashboard/reports/sales*') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Laporan Penjualan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           @endcan
         </ul>
       </nav>

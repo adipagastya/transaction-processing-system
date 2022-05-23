@@ -28,6 +28,7 @@
           <form method="post" action="/dashboard/transactions">
             @csrf
             <input class="form-control" name="user_id" value="<?= auth()->user()->id ?>" hidden required>
+            <input class="form-control" name="year" value="<?= date('Y') ?>" hidden required>
             <div class="card-body">
               <div class="form-group">
                 <label>Kode Transaksi</label>
@@ -46,7 +47,7 @@
                       @if (old('item_id') == $item->id)
                           <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
                       @else
-                          <option value="{{ $item->id }}">{{ $item->name }} - {{ $item->price }}</option>
+                          <option value="{{ $item->id }}" {{ $item->stock == 0 ? 'disabled' : '' }}>{{ $item->name }} - {{ $item->stock == 0 ? 'Stok Kosong' : $item->price }}</option>
                       @endif
                   @endforeach
                 </select>
